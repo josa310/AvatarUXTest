@@ -34,7 +34,7 @@ export class Config implements IModule {
 
   public async init() {
     const baseUrl = import.meta.env.BASE_URL;
-    const response = await fetch(`${baseUrl}gameConfig.json`);
+    const response = await fetch(`${baseUrl}/gameConfig.json`);
     if (!response.ok) throw new Error('Network response was not ok');
     this._data = await response.json();
   }
