@@ -28,12 +28,13 @@ export class Config implements IModule {
   public get rowCount() { return this._data.grid.rowCount; }
   public get symbols() { return this._data.symbols; }
   public get paytable() { return this._data.paytable; }
-  public get scatterID() { return this._data.scatterID; }
+  public get scatter() { return this._data.scatterID; }
   public get freespinChance() { return this._data.freespinChance; }
   public get freespinRange() { return this._data.freespinRange; }
 
   public async init() {
-    const response = await fetch('/gameConfig.json');
+    const baseUrl = import.meta.env.BASE_URL;
+    const response = await fetch(`${baseUrl}gameConfig.json`);
     if (!response.ok) throw new Error('Network response was not ok');
     this._data = await response.json();
   }
